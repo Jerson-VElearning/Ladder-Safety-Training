@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhpm8cqfh0pp"]
+
+[ext_resource type="Texture2D" uid="uid://divu28ndchag2" path="res://Images/Introduction.jpg" id="1_235nh"]
+[ext_resource type="Script" uid="uid://c8dlwtyyuhmv5" path="res://Scripts/Slide.gd" id="1_onth2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nw8lx"]
+bg_color = Color(0.956097, 0.972352, 0.997033, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3hv2"]
+bg_color = Color(0.874053, 0.680114, 0.174062, 1)
+
+[sub_resource type="Animation" id="Animation_235nh"]
+resource_name = "Slide_Animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_onth2"]
+_data = {
+&"Slide_Animation": SubResource("Animation_235nh")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_onth2")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nw8lx")
+
+[node name="Container" type="Container" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Introduction" type="Sprite2D" parent="Container"]
+position = Vector2(1508.75, 539.411)
+scale = Vector2(1.5043, 1.5043)
+texture = ExtResource("1_235nh")
+
+[node name="Header" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 63.0
+offset_right = 982.0
+offset_bottom = 198.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y3hv2")
+
+[node name="Label" type="Label" parent="Header"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 10.0
+offset_right = 964.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Introduction"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 258.0
+offset_right = 963.0
+offset_bottom = 878.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 46
+theme_override_font_sizes/bold_font_size = 46
+bbcode_enabled = true
+text = "Falls from ladders are a leading cause of [b]serious[/b] and fatal injuries in residential construction. 
+The goals of this course are to help you:
+[ul]
+ Understand how to correct or eliminate fall hazards on your job sites related to ladder use.
+ Understand the OSHA ladder safety requirements.
+[/ul]
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_onth2")
+}

@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://c08xi6lkikxcq"]
+
+[ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_yiojr"]
+[ext_resource type="Texture2D" uid="uid://ccgn5hv614x14" path="res://Images/Common_Ladder_Hazard.jpg" id="2_74tje"]
+
+[node name="Control" instance=ExtResource("1_yiojr")]
+slide_title = "Common Ladder Hazards"
+
+[node name="Introduction" parent="Container" index="0"]
+position = Vector2(954.733, 891.186)
+scale = Vector2(0.443782, 0.443782)
+texture = ExtResource("2_74tje")
+
+[node name="Header" parent="." index="2"]
+offset_right = 1053.0
+
+[node name="Label" parent="Header" index="0"]
+text = "Common Ladder Hazards"
+
+[node name="RichTextLabel" parent="." index="3"]
+offset_left = 33.0
+offset_top = 276.0
+offset_right = 1806.0
+offset_bottom = 661.0
+text = "[ul]
+ Improper set-up.
+ Portable ladders not 3 feet above landing surface.
+ Not securing ladder correctly.
+ Standing on the top two steps of a stepladder.
+ Overreaching when working from a ladder.
+[/ul]
+"

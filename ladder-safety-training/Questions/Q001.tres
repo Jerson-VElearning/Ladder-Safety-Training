@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Question" load_steps=5 format=3 uid="uid://oyu30xphguvg"]
+
+[ext_resource type="Script" uid="uid://cnbtotvcvxylk" path="res://Resources/Choice.gd" id="1_w6kps"]
+[ext_resource type="Script" uid="uid://8ct1keni5ssu" path="res://Resources/Question.gd" id="2_038u6"]
+
+[sub_resource type="Resource" id="Resource_w6kps"]
+script = ExtResource("1_w6kps")
+text = "Use your pet’s name for easy remembering"
+is_correct = false
+feedback = ""
+metadata/_custom_type_script = "uid://cnbtotvcvxylk"
+
+[sub_resource type="Resource" id="Resource_038u6"]
+script = ExtResource("1_w6kps")
+text = "Use at least 12 characters with mixed types"
+is_correct = true
+feedback = ""
+metadata/_custom_type_script = "uid://cnbtotvcvxylk"
+
+[resource]
+script = ExtResource("2_038u6")
+qtype = "single"
+prompt = "Question 01"
+choices = Array[ExtResource("1_w6kps")]([SubResource("Resource_w6kps"), SubResource("Resource_038u6")])
+points = 1
+metadata/_custom_type_script = "uid://8ct1keni5ssu"

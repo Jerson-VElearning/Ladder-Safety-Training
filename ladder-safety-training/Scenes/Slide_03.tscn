@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk07gsike5l1l"]
+
+[ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_8mpmm"]
+[ext_resource type="Texture2D" uid="uid://bxxk1tt1o6jqx" path="res://Images/Chart.jpg" id="1_esdqj"]
+
+[node name="Control" instance=ExtResource("1_8mpmm")]
+slide_title = "Why is Preventing Falls from Ladders Important?"
+
+[node name="Introduction" parent="Container" index="0"]
+position = Vector2(1261, 368)
+texture = ExtResource("1_esdqj")
+
+[node name="Header" parent="." index="2"]
+offset_top = -1.0
+offset_right = 701.0
+offset_bottom = 1088.0
+
+[node name="Label" parent="Header" index="0"]
+offset_right = 666.0
+offset_bottom = 1067.0
+text = "Why is Preventing Falls from Ladders Important?"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="RichTextLabel" parent="." index="3"]
+offset_left = 764.0
+offset_top = 674.0
+offset_right = 1870.0
+offset_bottom = 1097.0
+text = "[ol]
+Falls continue to be the leading cause of fatalities in residential construction. 
+Falls (602) were responsible for 45% of residential construction fatalities from 2003 to 2006.
+135 (22%) were falls from ladders.
+[/ol]
+"

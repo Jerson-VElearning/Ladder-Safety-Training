@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://ss68ij5exy5o"]
+
+[ext_resource type="Script" uid="uid://b4818nkdllthd" path="res://Scripts/question_card.gd" id="1_52cym"]
+[ext_resource type="Resource" uid="uid://oyu30xphguvg" path="res://Questions/Q001.tres" id="2_5l4oj"]
+[ext_resource type="Theme" uid="uid://ch6l5082r6sr4" path="res://Theme/MyTheme.theme" id="3_w83ue"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5l4oj"]
+bg_color = Color(0.784904, 0.683427, 0.820244, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_52cym")
+question = ExtResource("2_5l4oj")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5l4oj")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -323.0
+offset_top = 679.0
+offset_right = -2173.0
+offset_bottom = -338.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5l4oj")
+
+[node name="Prompt" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 171.0
+offset_top = 84.0
+offset_right = 1779.0
+offset_bottom = 250.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 111
+text = "Test"
+
+[node name="Choices" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 341.0
+offset_top = 310.0
+offset_right = 1493.0
+offset_bottom = 884.0
+theme = ExtResource("3_w83ue")
+
+[node name="Submit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 863.0
+offset_top = 810.0
+offset_right = 1145.0
+offset_bottom = 870.0
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 840.0
+offset_right = 1131.0
+offset_bottom = 978.0
+theme = ExtResource("3_w83ue")
+text = "Test"
+expand_icon = true

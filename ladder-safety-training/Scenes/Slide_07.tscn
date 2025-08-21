@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfxmqjvfm3mvj"]
+
+[ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_awpe4"]
+
+[node name="Control" instance=ExtResource("1_awpe4")]
+slide_title = "OSHA Fall Protection Requirements "
+
+[node name="Container" parent="." index="1"]
+visible = false
+
+[node name="Header" parent="." index="2"]
+offset_right = 1454.0
+
+[node name="Label" parent="Header" index="0"]
+text = "OSHA Fall Protection Requirements "
+
+[node name="RichTextLabel" parent="." index="3"]
+visible = false
+
+[node name="TabContainer" type="TabContainer" parent="." index="5"]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 268.0
+offset_right = 1050.0
+offset_bottom = 744.0
+theme_override_font_sizes/font_size = 28
+tab_alignment = 1
+current_tab = 4
+clip_tabs = false
+
+[node name="Subpart L - 1926_451(g)2" type="RichTextLabel" parent="TabContainer" index="1"]
+visible = false
+layout_mode = 2
+text = "Each employee on a scaffold more than 10’ (3.1M) above a lower level shall be protected from falling to a lower level. 
+"
+metadata/_tab_index = 0
+
+[node name="Subpart L - 1926_451(g)" type="Label" parent="TabContainer" index="2"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Subpart L - 1926_451(g)" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Subpart X – Ladders" type="Label" parent="TabContainer" index="3"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Subpart X – Ladders" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Subpart L - 1926_451(g)3" type="Label" parent="TabContainer" index="4"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Subpart L - 1926_451(g)3" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Subpart L - 1926_451(g)4" type="Label" parent="TabContainer" index="5"]
+layout_mode = 2
+metadata/_tab_index = 4

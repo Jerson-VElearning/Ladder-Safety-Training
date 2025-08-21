@@ -1,0 +1,306 @@
+[gd_scene load_steps=12 format=3 uid="uid://bvolo58fnxx5d"]
+
+[ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_vs6r2"]
+[ext_resource type="Texture2D" uid="uid://c25ki3o2vpm3c" path="res://Images/PreventFalls_Implement.png" id="2_a8vhe"]
+[ext_resource type="Script" uid="uid://diwl6asousjys" path="res://Scripts/control_animation.gd" id="2_xji45"]
+[ext_resource type="Texture2D" uid="uid://dcuyak46jvnbs" path="res://Images/PreventFalls_Understand.png" id="3_xji45"]
+[ext_resource type="Texture2D" uid="uid://bubtvtn77asna" path="res://Images/PreventFalls_Train.png" id="4_ilcwi"]
+[ext_resource type="Texture2D" uid="uid://ce3jbbdhyfeu6" path="res://Images/PreventFalls_Use.png" id="5_xy7iq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4ipg"]
+bg_color = Color(0.469584, 0.827269, 0.968509, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_baoox"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iudyx"]
+
+[sub_resource type="Animation" id="Animation_a8vhe"]
+resource_name = "Slide_Animation"
+length = 8.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.966667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.96667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel3")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.86667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel4")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.93333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xji45"]
+_data = {
+&"Slide_Animation": SubResource("Animation_a8vhe")
+}
+
+[node name="Control" instance=ExtResource("1_vs6r2")]
+slide_title = "How do you prevent falls from ladders?"
+
+[node name="Container" parent="." index="1"]
+visible = false
+
+[node name="Header" parent="." index="2"]
+offset_bottom = 264.0
+
+[node name="Label" parent="Header" index="0"]
+theme_override_font_sizes/font_size = 65
+text = "How do you prevent falls from ladders?"
+autowrap_mode = 2
+
+[node name="RichTextLabel" parent="." index="3"]
+visible = false
+offset_left = 32.0
+offset_top = 313.0
+offset_right = 1856.0
+offset_bottom = 933.0
+
+[node name="Panel" type="Panel" parent="." index="4"]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 0
+offset_left = 202.0
+offset_top = 398.0
+offset_right = 1643.0
+offset_bottom = 498.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_b4ipg")
+script = ExtResource("2_xji45")
+
+[node name="Container2" type="Panel" parent="Panel" index="0"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 383.0
+offset_right = 566.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_baoox")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/Container2" index="0"]
+layout_mode = 2
+offset_left = -232.0
+offset_right = 999.0
+offset_bottom = 100.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 43
+text = "Implement a comprehensive safety program.
+"
+vertical_alignment = 1
+
+[node name="Container" type="Panel" parent="Panel" index="1"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = 1.0
+offset_right = 187.0
+offset_bottom = -4.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iudyx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/Container" index="0"]
+position = Vector2(45, 49)
+scale = Vector2(0.409574, 0.409574)
+texture = ExtResource("2_a8vhe")
+
+[node name="Panel2" type="Panel" parent="." index="5"]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 0
+offset_left = 202.0
+offset_top = 544.0
+offset_right = 1643.0
+offset_bottom = 644.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_b4ipg")
+script = ExtResource("2_xji45")
+
+[node name="Container2" type="Panel" parent="Panel2" index="0"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 383.0
+offset_right = 566.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_baoox")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel2/Container2" index="0"]
+layout_mode = 2
+offset_left = -232.0
+offset_right = 999.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 43
+text = "Understand OSHA ladder regulations.
+"
+vertical_alignment = 1
+
+[node name="Container" type="Panel" parent="Panel2" index="1"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = 1.0
+offset_right = 187.0
+offset_bottom = -4.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iudyx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel2/Container" index="0"]
+position = Vector2(45, 49)
+scale = Vector2(0.409574, 0.409574)
+texture = ExtResource("3_xji45")
+
+[node name="Panel3" type="Panel" parent="." index="6"]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 0
+offset_left = 204.0
+offset_top = 687.0
+offset_right = 1645.0
+offset_bottom = 787.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_b4ipg")
+script = ExtResource("2_xji45")
+
+[node name="Container2" type="Panel" parent="Panel3" index="0"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 383.0
+offset_right = 566.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_baoox")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel3/Container2" index="0"]
+layout_mode = 2
+offset_left = -232.0
+offset_right = 1044.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 43
+text = "Train workers to identify hazards associated with ladder use.
+"
+vertical_alignment = 1
+
+[node name="Container" type="Panel" parent="Panel3" index="1"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = 1.0
+offset_right = 187.0
+offset_bottom = -4.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iudyx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel3/Container" index="0"]
+position = Vector2(45, 49)
+scale = Vector2(0.409574, 0.409574)
+texture = ExtResource("4_ilcwi")
+
+[node name="Panel4" type="Panel" parent="." index="7"]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 0
+offset_left = 202.0
+offset_top = 830.0
+offset_right = 1643.0
+offset_bottom = 930.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_b4ipg")
+script = ExtResource("2_xji45")
+metadata/_edit_group_ = true
+
+[node name="Container2" type="Panel" parent="Panel4" index="0"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 383.0
+offset_right = 566.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_baoox")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel4/Container2" index="0"]
+layout_mode = 2
+offset_left = -232.0
+offset_right = 999.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 43
+text = "Use safe work practices.
+"
+vertical_alignment = 1
+
+[node name="Container" type="Panel" parent="Panel4" index="1"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = 1.0
+offset_right = 187.0
+offset_bottom = -4.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iudyx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel4/Container" index="0"]
+position = Vector2(45, 49)
+scale = Vector2(0.409574, 0.409574)
+texture = ExtResource("5_xy7iq")
+
+[node name="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_xji45")
+}
+autoplay = "Slide_Animation"

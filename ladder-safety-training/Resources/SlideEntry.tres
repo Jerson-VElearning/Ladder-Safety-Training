@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SlideEntry" load_steps=3 format=3 uid="uid://en3iyp0r4u7f"]
+
+[ext_resource type="PackedScene" uid="uid://bnujd3tsoxwh" path="res://Scenes/Slide_01.tscn" id="1_4kpc5"]
+[ext_resource type="Script" uid="uid://bodb1bsujsms" path="res://Scripts/SlideEntry.gd" id="1_me8jm"]
+
+[resource]
+script = ExtResource("1_me8jm")
+scene = ExtResource("1_4kpc5")
+title = ""
+metadata/_custom_type_script = "uid://bodb1bsujsms"

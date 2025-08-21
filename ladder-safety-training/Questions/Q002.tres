@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Question" load_steps=3 format=3 uid="uid://brilpbto1fgno"]
+
+[ext_resource type="Script" uid="uid://cnbtotvcvxylk" path="res://Resources/Choice.gd" id="1_ur4uq"]
+[ext_resource type="Script" uid="uid://8ct1keni5ssu" path="res://Resources/Question.gd" id="2_0w5mw"]
+
+[resource]
+script = ExtResource("2_0w5mw")
+qtype = "single"
+prompt = ""
+choices = Array[ExtResource("1_ur4uq")]([])
+points = 1
+metadata/_custom_type_script = "uid://8ct1keni5ssu"

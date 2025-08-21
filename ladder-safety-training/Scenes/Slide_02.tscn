@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvdr6xdh3ytyc"]
+
+[ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_owsd7"]
+[ext_resource type="Texture2D" uid="uid://cjpm3xgcg0oei" path="res://Images/Objectives.jpg" id="1_vi62k"]
+
+[node name="Control" instance=ExtResource("1_owsd7")]
+slide_title = "Course Objectives"
+
+[node name="Introduction" parent="Container" index="0"]
+texture = ExtResource("1_vi62k")
+
+[node name="Label" parent="Header" index="0"]
+text = "Course Objectives"
+
+[node name="RichTextLabel" parent="." index="3"]
+offset_left = 54.0
+offset_top = 325.0
+offset_right = 986.0
+offset_bottom = 945.0
+text = "[ol]Identify the importance of preventing falls from ladders.
+Recognize fall hazards associated with ladder use.
+Identify OSHA requirements for ladders.  
+Identify work practices for using ladders safely.
+[/ol]
+"

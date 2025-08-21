@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="QuizConfig" load_steps=2 format=3 uid="uid://5bg4oytlgda5"]
+
+[ext_resource type="Script" uid="uid://b7srwinawenu1" path="res://Resources/QuizConfig.gd" id="1_fh3aj"]
+
+[resource]
+script = ExtResource("1_fh3aj")
+pass_mode = "percent"
+pass_value = 80
+shuffle_questions = true
+shuffle_choices = true
+max_attempts = 0
+grading = "all_or_nothing"
+allow_review = true
+retry_mode = "full"
+time_limit_seconds = 0
+bank_path = ""
+metadata/_custom_type_script = "uid://b7srwinawenu1"

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnujd3tsoxwh"]
+
+[ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_eij76"]
+
+[node name="Control" instance=ExtResource("1_eij76")]
+slide_title = "Introduction"
+
+[node name="RichTextLabel" parent="." index="3"]
+offset_left = 69.0
+offset_top = 319.0
+offset_right = 1001.0
+offset_bottom = 939.0
