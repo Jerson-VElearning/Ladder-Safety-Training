@@ -1,10 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://dk07gsike5l1l"]
+[gd_scene load_steps=6 format=3 uid="uid://dk07gsike5l1l"]
 
 [ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_8mpmm"]
 [ext_resource type="Texture2D" uid="uid://bxxk1tt1o6jqx" path="res://Images/Chart.jpg" id="1_esdqj"]
+[ext_resource type="AudioStream" uid="uid://6bfvqy1gmkym" path="res://Audio/04_Preventing_Falls.mp3" id="3_bdr56"]
+
+[sub_resource type="Animation" id="Animation_8mpmm"]
+resource_name = "Slide_Animation"
+length = 6.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_bdr56")
+}],
+"times": PackedFloat32Array(0.433333)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bdr56"]
+_data = {
+&"Slide_Animation": SubResource("Animation_8mpmm")
+}
 
 [node name="Control" instance=ExtResource("1_8mpmm")]
 slide_title = "Why is Preventing Falls from Ladders Important?"
+go_to_next_slide_on_finished = false
 
 [node name="Introduction" parent="Container" index="0"]
 position = Vector2(1261, 368)
@@ -34,3 +60,9 @@ Falls (602) were responsible for 45% of residential construction fatalities from
 135 (22%) were falls from ladders.
 [/ol]
 "
+
+[node name="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_bdr56")
+}
+autoplay = "Slide_Animation"

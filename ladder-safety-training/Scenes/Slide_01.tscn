@@ -1,6 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnujd3tsoxwh"]
+[gd_scene load_steps=5 format=3 uid="uid://bnujd3tsoxwh"]
 
 [ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_eij76"]
+[ext_resource type="AudioStream" uid="uid://2w583pax2x53" path="res://Audio/02_Introduction.mp3" id="2_y3hv2"]
+
+[sub_resource type="Animation" id="Animation_eij76"]
+resource_name = "Slide_Animation"
+length = 12.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_y3hv2")
+}],
+"times": PackedFloat32Array(0.266667)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y3hv2"]
+_data = {
+&"Slide_Animation": SubResource("Animation_eij76")
+}
 
 [node name="Control" instance=ExtResource("1_eij76")]
 slide_title = "Introduction"
@@ -10,3 +35,9 @@ offset_left = 69.0
 offset_top = 319.0
 offset_right = 1001.0
 offset_bottom = 939.0
+
+[node name="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_y3hv2")
+}
+autoplay = "Slide_Animation"

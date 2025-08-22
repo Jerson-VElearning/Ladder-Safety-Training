@@ -1,7 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvdr6xdh3ytyc"]
+[gd_scene load_steps=6 format=3 uid="uid://bvdr6xdh3ytyc"]
 
 [ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_owsd7"]
 [ext_resource type="Texture2D" uid="uid://cjpm3xgcg0oei" path="res://Images/Objectives.jpg" id="1_vi62k"]
+[ext_resource type="AudioStream" uid="uid://b2sm4kqhsahyp" path="res://Audio/03_Objectives.mp3" id="3_ba2o1"]
+
+[sub_resource type="Animation" id="Animation_owsd7"]
+resource_name = "Slide_Animation"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_ba2o1")
+}],
+"times": PackedFloat32Array(0.266667)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ba2o1"]
+_data = {
+&"Slide_Animation": SubResource("Animation_owsd7")
+}
 
 [node name="Control" instance=ExtResource("1_owsd7")]
 slide_title = "Course Objectives"
@@ -23,3 +59,9 @@ Identify OSHA requirements for ladders.
 Identify work practices for using ladders safely.
 [/ol]
 "
+
+[node name="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_ba2o1")
+}
+autoplay = "Slide_Animation"

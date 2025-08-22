@@ -1,7 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://c08xi6lkikxcq"]
+[gd_scene load_steps=6 format=3 uid="uid://c08xi6lkikxcq"]
 
 [ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_yiojr"]
 [ext_resource type="Texture2D" uid="uid://ccgn5hv614x14" path="res://Images/Common_Ladder_Hazard.jpg" id="2_74tje"]
+[ext_resource type="AudioStream" uid="uid://bgttv7r3qcoey" path="res://Audio/06_Common_ladder_hazards.mp3" id="3_74tje"]
+
+[sub_resource type="Animation" id="Animation_3rarf"]
+resource_name = "Slide_Animation"
+length = 5.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_74tje")
+}],
+"times": PackedFloat32Array(0.266667)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bgmo5"]
+_data = {
+&"Slide_Animation": SubResource("Animation_3rarf")
+}
 
 [node name="Control" instance=ExtResource("1_yiojr")]
 slide_title = "Common Ladder Hazards"
@@ -30,3 +55,9 @@ text = "[ul]
  Overreaching when working from a ladder.
 [/ul]
 "
+
+[node name="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_bgmo5")
+}
+autoplay = "Slide_Animation"
