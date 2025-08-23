@@ -6,14 +6,16 @@ extends Control
 @export var duration := 0.35
 @export var trans := Tween.TRANS_SINE
 @export var ease := Tween.EASE_OUT
+@export var is_visible: bool
 #@export var TextAnimation:  #lists the animation functions below.
 
 var _base_pos: Vector2
 
 func _ready():
 	_base_pos = position
-	visible = false
-	modulate.a = 0.0
+	visible = is_visible
+	if !visible:
+		modulate.a = 0.0
 
 func play():
 	#this function plays the selected text animation from the exported var

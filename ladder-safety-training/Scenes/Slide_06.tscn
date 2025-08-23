@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c08xi6lkikxcq"]
+[gd_scene load_steps=7 format=3 uid="uid://c08xi6lkikxcq"]
 
 [ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_yiojr"]
 [ext_resource type="Texture2D" uid="uid://ccgn5hv614x14" path="res://Images/Common_Ladder_Hazard.jpg" id="2_74tje"]
 [ext_resource type="AudioStream" uid="uid://bgttv7r3qcoey" path="res://Audio/06_Common_ladder_hazards.mp3" id="3_74tje"]
+[ext_resource type="Script" uid="uid://dscj6rrup2uif" path="res://Scripts/TextAnimation.gd" id="4_3rarf"]
 
 [sub_resource type="Animation" id="Animation_3rarf"]
 resource_name = "Slide_Animation"
-length = 5.0
+length = 19.0
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -19,9 +20,79 @@ tracks/0/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("3_74tje")
 }],
-"times": PackedFloat32Array(0.266667)
+"times": PackedFloat32Array(0.166667)
 }
 tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextAnimation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextAnimation2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.91),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextAnimation3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(7.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextAnimation4")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(9.67),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextAnimation5")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(12.6333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bgmo5"]
 _data = {
@@ -43,10 +114,11 @@ offset_right = 1053.0
 text = "Common Ladder Hazards"
 
 [node name="RichTextLabel" parent="." index="3"]
-offset_left = 33.0
-offset_top = 276.0
-offset_right = 1806.0
-offset_bottom = 661.0
+visible = false
+offset_left = 1300.0
+offset_top = 260.0
+offset_right = 3073.0
+offset_bottom = 645.0
 text = "[ul]
  Improper set-up.
  Portable ladders not 3 feet above landing surface.
@@ -61,3 +133,73 @@ libraries = {
 &"": SubResource("AnimationLibrary_bgmo5")
 }
 autoplay = "Slide_Animation"
+
+[node name="TextAnimation" type="RichTextLabel" parent="." index="6"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 228.0
+offset_right = 1864.0
+offset_bottom = 307.0
+bbcode_enabled = true
+text = "[ul]
+ Improper set-up.
+[/ul]
+"
+script = ExtResource("4_3rarf")
+metadata/_custom_type_script = "uid://dscj6rrup2uif"
+
+[node name="TextAnimation2" type="RichTextLabel" parent="." index="7"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 315.0
+offset_right = 1864.0
+offset_bottom = 394.0
+bbcode_enabled = true
+text = "[ul]
+ Portable ladders not 3 feet above landing surface.
+[/ul]
+"
+script = ExtResource("4_3rarf")
+metadata/_custom_type_script = "uid://dscj6rrup2uif"
+
+[node name="TextAnimation3" type="RichTextLabel" parent="." index="8"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 411.0
+offset_right = 1864.0
+offset_bottom = 490.0
+bbcode_enabled = true
+text = "[ul]
+ Not securing ladder correctly.
+[/ul]
+"
+script = ExtResource("4_3rarf")
+metadata/_custom_type_script = "uid://dscj6rrup2uif"
+
+[node name="TextAnimation4" type="RichTextLabel" parent="." index="9"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 493.0
+offset_right = 1864.0
+offset_bottom = 572.0
+bbcode_enabled = true
+text = "[ul]
+ Standing on the top two steps of a stepladder.
+[/ul]
+"
+script = ExtResource("4_3rarf")
+metadata/_custom_type_script = "uid://dscj6rrup2uif"
+
+[node name="TextAnimation5" type="RichTextLabel" parent="." index="10"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 584.0
+offset_right = 1864.0
+offset_bottom = 663.0
+bbcode_enabled = true
+text = "[ul]
+ Overreaching when working from a ladder.
+[/ul]
+"
+script = ExtResource("4_3rarf")
+metadata/_custom_type_script = "uid://dscj6rrup2uif"

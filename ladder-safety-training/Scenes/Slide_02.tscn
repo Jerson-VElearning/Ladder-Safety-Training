@@ -1,30 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvdr6xdh3ytyc"]
+[gd_scene load_steps=7 format=3 uid="uid://bvdr6xdh3ytyc"]
 
 [ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_owsd7"]
 [ext_resource type="Texture2D" uid="uid://cjpm3xgcg0oei" path="res://Images/Objectives.jpg" id="1_vi62k"]
 [ext_resource type="AudioStream" uid="uid://b2sm4kqhsahyp" path="res://Audio/03_Objectives.mp3" id="3_ba2o1"]
+[ext_resource type="Script" uid="uid://dscj6rrup2uif" path="res://Scripts/TextAnimation.gd" id="4_6hk0t"]
 
 [sub_resource type="Animation" id="Animation_owsd7"]
 resource_name = "Slide_Animation"
-length = 5.0
-tracks/0/type = "method"
+length = 16.5
+tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RichTextLabel")
+tracks/0/path = NodePath("AudioStreamPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -32,7 +22,63 @@ tracks/1/keys = {
 }],
 "times": PackedFloat32Array(0.266667)
 }
-tracks/1/use_blend = true
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextAnimation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextAnimation2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.72),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextAnimation3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(6.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextAnimation4")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(9.27),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ba2o1"]
 _data = {
@@ -49,10 +95,11 @@ texture = ExtResource("1_vi62k")
 text = "Course Objectives"
 
 [node name="RichTextLabel" parent="." index="3"]
-offset_left = 54.0
-offset_top = 325.0
-offset_right = 986.0
-offset_bottom = 945.0
+visible = false
+offset_left = 476.0
+offset_top = 329.0
+offset_right = 1408.0
+offset_bottom = 949.0
 text = "[ol]Identify the importance of preventing falls from ladders.
 Recognize fall hazards associated with ladder use.
 Identify OSHA requirements for ladders.  
@@ -65,3 +112,53 @@ libraries = {
 &"": SubResource("AnimationLibrary_ba2o1")
 }
 autoplay = "Slide_Animation"
+
+[node name="TextAnimation" type="RichTextLabel" parent="." index="6"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 324.0
+offset_right = 1050.0
+offset_bottom = 531.0
+bbcode_enabled = true
+text = "1.  Identify the importance of preventing falls from ladders.
+
+"
+script = ExtResource("4_6hk0t")
+metadata/_custom_type_script = "uid://dscj6rrup2uif"
+
+[node name="TextAnimation2" type="RichTextLabel" parent="." index="7"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 492.0
+offset_right = 1050.0
+offset_bottom = 703.0
+bbcode_enabled = true
+text = "2. Recognize fall hazards associated with ladder use.
+
+"
+script = ExtResource("4_6hk0t")
+metadata/_custom_type_script = "uid://dscj6rrup2uif"
+
+[node name="TextAnimation3" type="RichTextLabel" parent="." index="8"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 644.0
+offset_right = 1050.0
+offset_bottom = 743.0
+bbcode_enabled = true
+text = "3. Identify OSHA requirements for ladders.  
+"
+script = ExtResource("4_6hk0t")
+metadata/_custom_type_script = "uid://dscj6rrup2uif"
+
+[node name="TextAnimation4" type="RichTextLabel" parent="." index="9"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 753.0
+offset_right = 1050.0
+offset_bottom = 905.0
+bbcode_enabled = true
+text = "4. Identify work practices for using ladders safely.
+"
+script = ExtResource("4_6hk0t")
+metadata/_custom_type_script = "uid://dscj6rrup2uif"

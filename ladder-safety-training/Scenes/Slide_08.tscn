@@ -1,0 +1,244 @@
+[gd_scene load_steps=14 format=3 uid="uid://usjqgdaxko41"]
+
+[ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_drenp"]
+[ext_resource type="Texture2D" uid="uid://suoqvgfnqv5l" path="res://Images/ExtensionLadder.png" id="2_xp38x"]
+[ext_resource type="Script" uid="uid://b7h6yjaqpo4yx" path="res://Scripts/card_flip.gd" id="3_mtpqy"]
+[ext_resource type="Texture2D" uid="uid://bsam7pseyst4r" path="res://Images/CardBack.png" id="4_wspi4"]
+[ext_resource type="Texture2D" uid="uid://5wde6riy41aa" path="res://Images/Stepladder.png" id="5_l4pf1"]
+
+[sub_resource type="Animation" id="Animation_drenp"]
+resource_name = "Slide_Animation"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xp38x"]
+_data = {
+&"Slide_Animation": SubResource("Animation_drenp")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0o0i"]
+size = Vector2(475, 556)
+
+[sub_resource type="Animation" id="Animation_hyyq3"]
+resource_name = "StepLadderAnimation"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StepLadder:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(2.37841, 1, 2.37841, 1, 2.37841),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.919715, 1), Vector2(1e-05, 1), Vector2(0.294, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StepLadder/CardBack:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.166667, 0.204635),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_hpu4y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StepLadder:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StepLadder/CardBack:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2yxxr"]
+_data = {
+&"FlipAnimation": SubResource("Animation_hyyq3"),
+&"RESET": SubResource("Animation_hpu4y")
+}
+
+[sub_resource type="Animation" id="Animation_xp38x"]
+resource_name = "FlipAnimation"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(2.37841, 1, 2.37841, 1, 2.37841),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.919715, 1), Vector2(1e-05, 1), Vector2(0.29406, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardBack:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.161611, 0.199579),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mtpqy"]
+_data = {
+&"FlipAnimation": SubResource("Animation_xp38x")
+}
+
+[node name="Control" instance=ExtResource("1_drenp")]
+mouse_filter = 2
+
+[node name="Background" parent="." index="0"]
+mouse_filter = 2
+
+[node name="Container" parent="." index="1"]
+visible = false
+
+[node name="RichTextLabel" parent="." index="3"]
+offset_left = 1090.0
+offset_top = 77.0
+offset_right = 1756.0
+offset_bottom = 303.0
+
+[node name="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_xp38x")
+}
+
+[node name="StepLadder" type="Control" parent="." index="6" node_paths=PackedStringArray("animation")]
+anchors_preset = 0
+offset_left = 285.0
+offset_top = 306.0
+offset_right = 835.0
+offset_bottom = 956.0
+pivot_offset = Vector2(275, 325)
+mouse_filter = 2
+script = ExtResource("3_mtpqy")
+animation = NodePath("CardAnimation")
+movement_offset = Vector2(0, -25)
+animation_duration = 0.4
+
+[node name="Area2D" type="Area2D" parent="StepLadder" index="0"]
+position = Vector2(59, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StepLadder/Area2D" index="0"]
+position = Vector2(217, 249)
+shape = SubResource("RectangleShape2D_g0o0i")
+
+[node name="CardAnimation" type="AnimationPlayer" parent="StepLadder" index="1"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_2yxxr")
+}
+
+[node name="Stepladder" type="Sprite2D" parent="StepLadder" index="2"]
+texture = ExtResource("5_l4pf1")
+centered = false
+
+[node name="CardBack" type="Sprite2D" parent="StepLadder" index="3"]
+z_index = -1
+texture = ExtResource("4_wspi4")
+centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StepLadder/CardBack" index="0"]
+offset_left = 69.0
+offset_top = 92.0
+offset_right = 486.0
+offset_bottom = 596.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 41
+text = "These are self-supporting ladders that can be used for a variety of tasks. They are stable and can be easily moved around the site."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExtensionLadder2" type="Control" parent="." index="7" node_paths=PackedStringArray("animation")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1083.0
+offset_top = 306.0
+offset_right = 1633.0
+offset_bottom = 956.0
+pivot_offset = Vector2(275, 325)
+mouse_filter = 2
+script = ExtResource("3_mtpqy")
+animation = NodePath("ExtensionAnimation")
+movement_offset = Vector2(0, -25)
+animation_duration = 0.4
+trans_type = 1
+
+[node name="ExtensionAnimation" type="AnimationPlayer" parent="ExtensionLadder2" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_mtpqy")
+}
+
+[node name="Area2D" type="Area2D" parent="ExtensionLadder2" index="1"]
+position = Vector2(59, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExtensionLadder2/Area2D" index="0"]
+position = Vector2(217, 249)
+shape = SubResource("RectangleShape2D_g0o0i")
+
+[node name="ExtensionLadder" type="Sprite2D" parent="ExtensionLadder2" index="2"]
+position = Vector2(277, 326)
+texture = ExtResource("2_xp38x")
+
+[node name="CardBack" type="Sprite2D" parent="ExtensionLadder2" index="3"]
+z_index = -1
+texture = ExtResource("4_wspi4")
+centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExtensionLadder2/CardBack" index="0"]
+offset_left = 69.0
+offset_top = 92.0
+offset_right = 486.0
+offset_bottom = 596.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 41
+text = "These ladders can be extended to reach higher areas. They are not self-supporting and need to be leaned against a stable surface.
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="StepLadder/Area2D" to="StepLadder" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="StepLadder/Area2D" to="StepLadder" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="StepLadder/Area2D" to="StepLadder" method="_on_mouse_exited"]
+[connection signal="input_event" from="ExtensionLadder2/Area2D" to="ExtensionLadder2" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="ExtensionLadder2/Area2D" to="ExtensionLadder2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ExtensionLadder2/Area2D" to="ExtensionLadder2" method="_on_mouse_exited"]

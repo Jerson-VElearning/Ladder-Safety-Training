@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnujd3tsoxwh"]
+[gd_scene load_steps=7 format=3 uid="uid://bnujd3tsoxwh"]
 
 [ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_eij76"]
+[ext_resource type="Script" uid="uid://dscj6rrup2uif" path="res://Scripts/TextAnimation.gd" id="2_p2aou"]
 [ext_resource type="AudioStream" uid="uid://2w583pax2x53" path="res://Audio/02_Introduction.mp3" id="2_y3hv2"]
+[ext_resource type="Theme" uid="uid://ch6l5082r6sr4" path="res://Theme/MyTheme.theme" id="3_pfmvq"]
 
 [sub_resource type="Animation" id="Animation_eij76"]
 resource_name = "Slide_Animation"
-length = 12.0
+length = 19.5
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -21,6 +23,62 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.266667)
 }
 tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RichTextLabel")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.266667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextAnimation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(6.36667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextAnimation2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(8.33333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextAnimation3")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(12.8333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y3hv2"]
 _data = {
@@ -31,12 +89,51 @@ _data = {
 slide_title = "Introduction"
 
 [node name="RichTextLabel" parent="." index="3"]
-offset_left = 69.0
-offset_top = 319.0
-offset_right = 1001.0
-offset_bottom = 939.0
+offset_left = 38.0
+offset_top = 279.0
+offset_right = 961.0
+offset_bottom = 512.0
+text = "Falls from ladders are a leading cause of [b]serious[/b] and fatal injuries in residential construction. "
+script = ExtResource("2_p2aou")
 
-[node name="AnimationPlayer" parent="." index="4"]
+[node name="TextAnimation" type="RichTextLabel" parent="." index="4"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 493.0
+offset_right = 1024.0
+offset_bottom = 580.0
+theme = ExtResource("3_pfmvq")
+text = "The goals of this course are to help you:"
+script = ExtResource("2_p2aou")
+metadata/_custom_type_script = "uid://dscj6rrup2uif"
+
+[node name="TextAnimation2" type="RichTextLabel" parent="." index="5"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 577.0
+offset_right = 1047.0
+offset_bottom = 779.0
+bbcode_enabled = true
+text = "[ul]
+ Understand how to correct or eliminate fall hazards on your job sites related to ladder use.
+[/ul]"
+script = ExtResource("2_p2aou")
+metadata/_custom_type_script = "uid://dscj6rrup2uif"
+
+[node name="TextAnimation3" type="RichTextLabel" parent="." index="6"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 792.0
+offset_right = 1005.0
+offset_bottom = 961.0
+bbcode_enabled = true
+text = "[ul]
+ Understand the OSHA ladder safety requirements.
+[/ul]"
+script = ExtResource("2_p2aou")
+metadata/_custom_type_script = "uid://dscj6rrup2uif"
+
+[node name="AnimationPlayer" parent="." index="7"]
 libraries = {
 &"": SubResource("AnimationLibrary_y3hv2")
 }

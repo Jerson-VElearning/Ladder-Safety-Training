@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvolo58fnxx5d"]
+[gd_scene load_steps=13 format=3 uid="uid://bvolo58fnxx5d"]
 
 [ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_vs6r2"]
 [ext_resource type="Texture2D" uid="uid://c25ki3o2vpm3c" path="res://Images/PreventFalls_Implement.png" id="2_a8vhe"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dcuyak46jvnbs" path="res://Images/PreventFalls_Understand.png" id="3_xji45"]
 [ext_resource type="Texture2D" uid="uid://bubtvtn77asna" path="res://Images/PreventFalls_Train.png" id="4_ilcwi"]
 [ext_resource type="Texture2D" uid="uid://ce3jbbdhyfeu6" path="res://Images/PreventFalls_Use.png" id="5_xy7iq"]
+[ext_resource type="AudioStream" uid="uid://cm7p5evtsk4kw" path="res://Audio/05_How_to_prevent_falls.mp3" id="7_xji45"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4ipg"]
 bg_color = Color(0.469584, 0.827269, 0.968509, 1)
@@ -20,7 +21,7 @@ corner_radius_bottom_left = 20
 
 [sub_resource type="Animation" id="Animation_a8vhe"]
 resource_name = "Slide_Animation"
-length = 8.0
+length = 20.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -28,7 +29,7 @@ tracks/0/path = NodePath("Panel")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.966667),
+"times": PackedFloat32Array(3.96667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -42,7 +43,7 @@ tracks/1/path = NodePath("Panel2")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.96667),
+"times": PackedFloat32Array(6.13333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -56,7 +57,7 @@ tracks/2/path = NodePath("Panel3")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(2.86667),
+"times": PackedFloat32Array(9.46667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -70,13 +71,28 @@ tracks/3/path = NodePath("Panel4")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(3.93333),
+"times": PackedFloat32Array(11.7),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"text_fade_up"
 }]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_xji45")
+}],
+"times": PackedFloat32Array(0.233333)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xji45"]
 _data = {
@@ -129,8 +145,7 @@ layout_mode = 2
 offset_left = -232.0
 offset_right = 999.0
 offset_bottom = 100.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 43
+theme_override_font_sizes/normal_font_size = 41
 text = "Implement a comprehensive safety program.
 "
 vertical_alignment = 1
@@ -178,8 +193,7 @@ offset_right = 999.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 43
+theme_override_font_sizes/normal_font_size = 41
 text = "Understand OSHA ladder regulations.
 "
 vertical_alignment = 1
@@ -227,8 +241,7 @@ offset_right = 1044.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 43
+theme_override_font_sizes/normal_font_size = 41
 text = "Train workers to identify hazards associated with ladder use.
 "
 vertical_alignment = 1
@@ -277,8 +290,7 @@ offset_right = 999.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 43
+theme_override_font_sizes/normal_font_size = 41
 text = "Use safe work practices.
 "
 vertical_alignment = 1

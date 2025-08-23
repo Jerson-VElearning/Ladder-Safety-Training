@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Ladder Safety Training"
+run/main_scene="uid://buthxbc6me2ox"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -18,6 +19,10 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+
+[gui]
+
+theme/custom="uid://ch6l5082r6sr4"
 
 [rendering]
 

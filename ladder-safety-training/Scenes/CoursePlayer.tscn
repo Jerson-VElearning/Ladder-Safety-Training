@@ -19,7 +19,7 @@ grow_vertical = 2
 theme = ExtResource("1_arqed")
 script = ExtResource("1_vjnhd")
 slides = Array[PackedScene]([ExtResource("2_4clcw"), ExtResource("3_vlwof"), ExtResource("4_arqed"), ExtResource("5_wjt1c"), ExtResource("6_4clcw")])
-titles_preview = null
+titles_preview = Array[String](["Introduction", "Course Objectives", "Why is Preventing Falls from Ladders Important?", "How do you prevent falls from ladders?", "Common Ladder Hazards"])
 
 [node name="SlideHost" type="Container" parent="."]
 unique_name_in_owner = true
@@ -89,51 +89,6 @@ popup/item_0/text = "TEst"
 popup/item_0/id = 0
 popup/item_1/text = "test"
 popup/item_1/id = 1
-
-[node name="MenuBar" type="MenuBar" parent="."]
-layout_mode = 0
-offset_left = 803.0
-offset_top = 436.0
-offset_right = 1254.0
-offset_bottom = 491.0
-
-[node name="PopupMenu" type="PopupMenu" parent="MenuBar"]
-
-[node name="PopupMenu" type="PopupMenu" parent="MenuBar/PopupMenu"]
-auto_translate_mode = 1
-
-[node name="PopupMenu" type="PopupMenu" parent="MenuBar/PopupMenu/PopupMenu"]
-auto_translate_mode = 1
-
-[node name="PopupMenu" type="PopupMenu" parent="MenuBar/PopupMenu/PopupMenu/PopupMenu"]
-auto_translate_mode = 1
-
-[node name="PopupMenu2" type="PopupMenu" parent="MenuBar/PopupMenu"]
-auto_translate_mode = 1
-
-[node name="PopupMenu" type="PopupMenu" parent="MenuBar/PopupMenu/PopupMenu2"]
-auto_translate_mode = 1
-
-[node name="PopupMenu" type="PopupMenu" parent="MenuBar/PopupMenu/PopupMenu2/PopupMenu"]
-auto_translate_mode = 1
-
-[node name="PopupMenu3" type="PopupMenu" parent="MenuBar/PopupMenu"]
-auto_translate_mode = 1
-
-[node name="PopupMenu" type="PopupMenu" parent="MenuBar/PopupMenu/PopupMenu3"]
-auto_translate_mode = 1
-
-[node name="PopupMenu" type="PopupMenu" parent="MenuBar/PopupMenu/PopupMenu3/PopupMenu"]
-auto_translate_mode = 1
-
-[node name="PopupMenu2" type="PopupMenu" parent="MenuBar"]
-auto_translate_mode = 1
-
-[node name="PopupMenu3" type="PopupMenu" parent="MenuBar"]
-auto_translate_mode = 1
-
-[node name="PopupMenu4" type="PopupMenu" parent="MenuBar"]
-auto_translate_mode = 1
 
 [connection signal="pressed" from="HeaderUI/BottomPanel/NextButton" to="." method="go_next"]
 [connection signal="pressed" from="HeaderUI/BottomPanel/PreviousButton" to="." method="go_prev"]

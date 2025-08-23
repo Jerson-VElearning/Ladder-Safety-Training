@@ -1,0 +1,280 @@
+[gd_scene load_steps=15 format=3 uid="uid://cr6mea4jpxt8x"]
+
+[ext_resource type="Script" uid="uid://c8dlwtyyuhmv5" path="res://Scripts/Slide.gd" id="1_pdsse"]
+[ext_resource type="Texture2D" uid="uid://bstxw48klmb4k" path="res://Images/Ladder_Inspection.jpg" id="2_l3fsn"]
+[ext_resource type="Script" uid="uid://dsc354stvq573" path="res://Scripts/icon_animation.gd" id="3_moo1l"]
+[ext_resource type="Texture2D" uid="uid://b6v4cbkj8kxxm" path="res://Images/Inspection_Icon.png" id="4_s4iuo"]
+[ext_resource type="Script" uid="uid://diwl6asousjys" path="res://Scripts/control_animation.gd" id="5_s4iuo"]
+[ext_resource type="Texture2D" uid="uid://o62tiiqbqsni" path="res://Images/04_BrokenRung.jpeg" id="6_a0d4k"]
+[ext_resource type="Script" uid="uid://bk0whtxfkgme3" path="res://Scripts/close_button.gd" id="7_a0d4k"]
+[ext_resource type="Texture2D" uid="uid://cvckllyr78w5q" path="res://Images/CloseButton.svg" id="7_ho0di"]
+[ext_resource type="Texture2D" uid="uid://bkyqgrh7kihfu" path="res://Images/04_Bends.jpeg" id="9_ho0di"]
+[ext_resource type="Script" uid="uid://dscj6rrup2uif" path="res://Scripts/TextAnimation.gd" id="10_n5eqy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0d4k"]
+bg_color = Color(0.874053, 0.680114, 0.174062, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ho0di"]
+radius = 49.0102
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5eqy"]
+bg_color = Color(0.880496, 0.880496, 0.880496, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.526423, 0.526423, 0.526422, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0, 0, 0, 0.196078)
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n5eqy"]
+radius = 39.0
+
+[node name="CourseSlide" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_pdsse")
+metadata/_custom_type_script = "uid://c8dlwtyyuhmv5"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1924.0
+offset_bottom = 1078.0
+mouse_filter = 2
+theme_type_variation = &"Panel_Background"
+
+[node name="Header" type="Panel" parent="Panel"]
+offset_top = 63.0
+offset_right = 982.0
+offset_bottom = 198.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a0d4k")
+
+[node name="Label" type="Label" parent="Panel/Header"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 10.0
+offset_right = 964.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Ladder Inspection"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="LadderInspection" type="Sprite2D" parent="."]
+position = Vector2(1378, 545)
+scale = Vector2(0.405907, 0.405907)
+texture = ExtResource("2_l3fsn")
+
+[node name="Cracks" type="Area2D" parent="." node_paths=PackedStringArray("target_panel")]
+position = Vector2(1164, 608)
+script = ExtResource("3_moo1l")
+hover_scale = Vector2(1.4, 1.4)
+target_panel = NodePath("../Cracks_Panel")
+
+[node name="InspectionIcon" type="Sprite2D" parent="Cracks"]
+position = Vector2(-1, -6)
+texture = ExtResource("4_s4iuo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cracks"]
+position = Vector2(-1, -6)
+shape = SubResource("CircleShape2D_ho0di")
+
+[node name="Bent Rungs" type="Area2D" parent="." node_paths=PackedStringArray("target_panel")]
+position = Vector2(1552, 523)
+script = ExtResource("3_moo1l")
+hover_scale = Vector2(1.4, 1.4)
+target_panel = NodePath("../Bent_Panel")
+
+[node name="InspectionIcon" type="Sprite2D" parent="Bent Rungs"]
+position = Vector2(-1, -6)
+texture = ExtResource("4_s4iuo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bent Rungs"]
+position = Vector2(-1, -6)
+shape = SubResource("CircleShape2D_ho0di")
+
+[node name="Footing" type="Area2D" parent="." node_paths=PackedStringArray("target_panel")]
+position = Vector2(1624, 900)
+script = ExtResource("3_moo1l")
+hover_scale = Vector2(1.4, 1.4)
+target_panel = NodePath("../Footing_Panel")
+
+[node name="InspectionIcon" type="Sprite2D" parent="Footing"]
+position = Vector2(-1, -6)
+texture = ExtResource("4_s4iuo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Footing"]
+position = Vector2(-1, -6)
+shape = SubResource("CircleShape2D_ho0di")
+
+[node name="Cracks_Panel" type="Panel" parent="." groups=["Panels"]]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 653.0
+offset_right = 965.0
+offset_bottom = 1001.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_n5eqy")
+script = ExtResource("5_s4iuo")
+
+[node name="Label" type="Label" parent="Cracks_Panel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 14.0
+offset_right = 679.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 46
+text = "Cracks and Weak Points: "
+
+[node name="04BrokenRung" type="Sprite2D" parent="Cracks_Panel"]
+position = Vector2(626, 204)
+scale = Vector2(0.468, 0.468)
+texture = ExtResource("6_a0d4k")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Cracks_Panel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 88.0
+offset_right = 434.0
+offset_bottom = 300.0
+theme_override_font_sizes/normal_font_size = 35
+text = "Check for any visible cracks or weak points in the ladder structure."
+
+[node name="Area2D" type="Area2D" parent="Cracks_Panel" node_paths=PackedStringArray("target_object")]
+position = Vector2(830, 0)
+script = ExtResource("7_a0d4k")
+target_object = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cracks_Panel/Area2D"]
+shape = SubResource("CircleShape2D_n5eqy")
+
+[node name="CloseButton" type="Sprite2D" parent="Cracks_Panel/Area2D"]
+texture = ExtResource("7_ho0di")
+
+[node name="Bent_Panel" type="Panel" parent="." groups=["Panels"]]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 653.0
+offset_right = 965.0
+offset_bottom = 1001.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_n5eqy")
+script = ExtResource("5_s4iuo")
+
+[node name="Label" type="Label" parent="Bent_Panel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 14.0
+offset_right = 679.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 46
+text = "Bent Rungs"
+
+[node name="04BrokenRung" type="Sprite2D" parent="Bent_Panel"]
+position = Vector2(588.88, 176.16)
+scale = Vector2(0.584, 0.584)
+texture = ExtResource("9_ho0di")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Bent_Panel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 88.0
+offset_right = 434.0
+offset_bottom = 300.0
+theme_override_font_sizes/normal_font_size = 35
+text = "Ensure that the rungs are not bent or damaged.
+"
+
+[node name="Area2D" type="Area2D" parent="Bent_Panel" node_paths=PackedStringArray("target_object")]
+position = Vector2(830, 0)
+script = ExtResource("7_a0d4k")
+target_object = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bent_Panel/Area2D"]
+shape = SubResource("CircleShape2D_n5eqy")
+
+[node name="CloseButton" type="Sprite2D" parent="Bent_Panel/Area2D"]
+texture = ExtResource("7_ho0di")
+
+[node name="Footing_Panel" type="Panel" parent="." groups=["Panels"]]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 653.0
+offset_right = 965.0
+offset_bottom = 1001.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_n5eqy")
+script = ExtResource("5_s4iuo")
+
+[node name="Label" type="Label" parent="Footing_Panel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 14.0
+offset_right = 679.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 46
+text = "Bent Rungs"
+
+[node name="04BrokenRung" type="Sprite2D" parent="Footing_Panel"]
+position = Vector2(588.88, 176.16)
+scale = Vector2(0.584, 0.584)
+texture = ExtResource("9_ho0di")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Footing_Panel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 88.0
+offset_right = 434.0
+offset_bottom = 300.0
+theme_override_font_sizes/normal_font_size = 35
+text = "Ensure that the rungs are not bent or damaged.
+"
+
+[node name="Area2D" type="Area2D" parent="Footing_Panel" node_paths=PackedStringArray("target_object")]
+position = Vector2(830, 0)
+script = ExtResource("7_a0d4k")
+target_object = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Footing_Panel/Area2D"]
+shape = SubResource("CircleShape2D_n5eqy")
+
+[node name="CloseButton" type="Sprite2D" parent="Footing_Panel/Area2D"]
+texture = ExtResource("7_ho0di")
+
+[node name="TextAnimation" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 273.0
+offset_right = 950.0
+offset_bottom = 550.0
+theme_override_font_sizes/italics_font_size = 36
+bbcode_enabled = true
+text = "Ladders must be inspected before each use. 
+
+[i]Click on each icon to learn more.[/i]"
+script = ExtResource("10_n5eqy")
+metadata/_custom_type_script = "uid://dscj6rrup2uif"
+
+[connection signal="input_event" from="Cracks" to="Cracks" method="_on_input_event"]
+[connection signal="mouse_entered" from="Cracks" to="Cracks" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Cracks" to="Cracks" method="_on_mouse_exited"]
+[connection signal="input_event" from="Bent Rungs" to="Bent Rungs" method="_on_input_event"]
+[connection signal="mouse_entered" from="Bent Rungs" to="Bent Rungs" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Bent Rungs" to="Bent Rungs" method="_on_mouse_exited"]
+[connection signal="input_event" from="Footing" to="Footing" method="_on_input_event"]
+[connection signal="mouse_entered" from="Footing" to="Footing" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Footing" to="Footing" method="_on_mouse_exited"]
+[connection signal="input_event" from="Cracks_Panel/Area2D" to="Cracks_Panel/Area2D" method="_on_input_event"]
+[connection signal="input_event" from="Bent_Panel/Area2D" to="Bent_Panel/Area2D" method="_on_input_event"]
+[connection signal="input_event" from="Footing_Panel/Area2D" to="Footing_Panel/Area2D" method="_on_input_event"]

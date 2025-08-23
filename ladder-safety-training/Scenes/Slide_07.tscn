@@ -15,65 +15,88 @@ offset_right = 1454.0
 text = "OSHA Fall Protection Requirements "
 
 [node name="RichTextLabel" parent="." index="3"]
-visible = false
+offset_left = 62.0
+offset_right = 1255.0
+offset_bottom = 406.0
+text = "Here is a list of OSHA’s fall protection requirements. Click on each tab to learn more. 
+"
 
 [node name="TabContainer" type="TabContainer" parent="." index="5"]
 layout_mode = 0
-offset_left = 122.0
-offset_top = 268.0
-offset_right = 1050.0
-offset_bottom = 744.0
-theme_override_font_sizes/font_size = 28
+offset_left = 129.0
+offset_top = 479.0
+offset_right = 1762.0
+offset_bottom = 955.0
 tab_alignment = 1
-current_tab = 4
+current_tab = 0
 clip_tabs = false
 
-[node name="Subpart L - 1926_451(g)2" type="RichTextLabel" parent="TabContainer" index="1"]
-visible = false
+[node name="Subpart L - 1926_451(g)" type="Label" parent="TabContainer" index="0"]
 layout_mode = 2
-text = "Each employee on a scaffold more than 10’ (3.1M) above a lower level shall be protected from falling to a lower level. 
-"
 metadata/_tab_index = 0
 
-[node name="Subpart L - 1926_451(g)" type="Label" parent="TabContainer" index="2"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Subpart L - 1926_451(g)" index="0"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Subpart L - 1926_451(g)" index="0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"RichTextLabel_PanelText"
+text = "Each employee on a scaffold more than 10’ (3.1M) above a lower level shall be protected from falling to a lower level. 
+"
 
-[node name="Subpart X – Ladders" type="Label" parent="TabContainer" index="3"]
+[node name="Subpart X – Ladders" type="Label" parent="TabContainer" index="1"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Subpart X – Ladders" index="0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -2.0
+offset_right = -3.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"RichTextLabel_PanelText"
+text = "Fall protection is not required for workers climbing or working on portable ladders.
+"
 
-[node name="Subpart L - 1926_451(g)3" type="Label" parent="TabContainer" index="4"]
+[node name="Subpart X – Stairways" type="Label" parent="TabContainer" index="2"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 3
+metadata/_tab_index = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Subpart L - 1926_451(g)3" index="0"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Subpart X – Stairways" index="0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"RichTextLabel_PanelText"
+text = "Stairways having four (4) or more risers or rising more than 30 inches must be equipped with atleast one handrail; and one stair rail system along each unprotected side or edge. 
+"
 
-[node name="Subpart L - 1926_451(g)4" type="Label" parent="TabContainer" index="5"]
+[node name="Subpart M - 1926_501(b)(13)" type="Label" parent="TabContainer" index="3"]
+visible = false
 layout_mode = 2
-metadata/_tab_index = 4
+metadata/_tab_index = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Subpart M - 1926_501(b)(13)" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"RichTextLabel_PanelText"
+bbcode_enabled = true
+text = "Residential construction. Each employee engaged in residential construction activities 6’ or more above lower levels must be protected by conventional or alternative fall protection:
+
+[i][b]Exemption:[/b] When the employer can demonstrate the protection is infeasible or creates a greater hazard the employer must develop an alternative fall protection plan.[i]
+"
