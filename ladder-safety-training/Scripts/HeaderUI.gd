@@ -1,11 +1,11 @@
 extends Control
 
-@onready var menu_button: MenuButton = $SlideMenu
+@onready var menu_button: MenuButton = %SlideMenu
 var shell: Node
 
 func _ready() -> void:
 	# Get a reference to your shell; if you put the header under the shell:
-	shell = get_parent()  # or: get_tree().get_first_node_in_group("CourseShell")
+	shell = get_tree().get_first_node_in_group("CourseShell")  # or get_parent() or: get_tree().get_first_node_in_group("CourseShell")
 	var popup := menu_button.get_popup()
 	popup.id_pressed.connect(_on_slide_chosen)
 

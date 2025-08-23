@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpt6qg15730lm"]
+
+[ext_resource type="Script" uid="uid://dciouqayna6i4" path="res://Scripts/QuizQuestion.gd" id="1_hphk4"]
+[ext_resource type="Theme" uid="uid://ch6l5082r6sr4" path="res://Theme/MyTheme.theme" id="2_jbra1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbra1"]
+bg_color = Color(0.956097, 0.972352, 0.997033, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81mij"]
+bg_color = Color(0.874053, 0.680114, 0.174062, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hphk4")
+question_type = 3
+options = Array[String](["Option 5"])
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jbra1")
+
+[node name="Header" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 63.0
+offset_right = 982.0
+offset_bottom = 198.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_81mij")
+
+[node name="Label" type="Label" parent="Header"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 10.0
+offset_right = 964.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Introduction"
+
+[node name="CheckBox" type="CheckBox" parent="." groups=["correct"]]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 393.0
+offset_right = 1005.0
+offset_bottom = 531.0
+theme = ExtResource("2_jbra1")
+text = "Test"
+expand_icon = true
+
+[node name="CheckBox2" type="CheckBox" parent="." groups=["correct"]]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 531.0
+offset_right = 1005.0
+offset_bottom = 669.0
+theme = ExtResource("2_jbra1")
+text = "Test"
+expand_icon = true
+
+[node name="CheckBox3" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 669.0
+offset_right = 1005.0
+offset_bottom = 807.0
+theme = ExtResource("2_jbra1")
+text = "Test"
+expand_icon = true
+
+[node name="CheckBox4" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 807.0
+offset_right = 1005.0
+offset_bottom = 945.0
+theme = ExtResource("2_jbra1")
+text = "Test"
+expand_icon = true

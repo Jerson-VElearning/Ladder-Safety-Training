@@ -31,7 +31,7 @@ tab_alignment = 1
 current_tab = 0
 clip_tabs = false
 
-[node name="Subpart L - 1926_451(g)" type="Label" parent="TabContainer" index="0"]
+[node name="Subpart L - 1926_451(g)" type="Label" parent="TabContainer" index="1"]
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -46,7 +46,7 @@ theme_type_variation = &"RichTextLabel_PanelText"
 text = "Each employee on a scaffold more than 10’ (3.1M) above a lower level shall be protected from falling to a lower level. 
 "
 
-[node name="Subpart X – Ladders" type="Label" parent="TabContainer" index="1"]
+[node name="Subpart X – Ladders" type="Label" parent="TabContainer" index="2"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
@@ -66,7 +66,7 @@ theme_type_variation = &"RichTextLabel_PanelText"
 text = "Fall protection is not required for workers climbing or working on portable ladders.
 "
 
-[node name="Subpart X – Stairways" type="Label" parent="TabContainer" index="2"]
+[node name="Subpart X – Stairways" type="Label" parent="TabContainer" index="3"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
@@ -82,7 +82,7 @@ theme_type_variation = &"RichTextLabel_PanelText"
 text = "Stairways having four (4) or more risers or rising more than 30 inches must be equipped with atleast one handrail; and one stair rail system along each unprotected side or edge. 
 "
 
-[node name="Subpart M - 1926_501(b)(13)" type="Label" parent="TabContainer" index="3"]
+[node name="Subpart M - 1926_501(b)(13)" type="Label" parent="TabContainer" index="4"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3

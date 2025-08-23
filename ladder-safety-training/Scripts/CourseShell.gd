@@ -13,17 +13,38 @@ signal progress_changed(unlocked_max_index:int, index:int)
 # Editor-only, visible in Inspector, not saved to the scene file
 @export var titles_preview: Array[String] = []
 
+#Progress Bar
+@onready var slide_progress_bar: ProgressBar = %SlideProgressBar
+
+
 @onready var host := $SlideHost
 
 var index: int = 0
-var unlocked_max_index: int = 0
+var unlocked_max_index: int = 99
 var current_slide: Node
+var total_length: float
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		_refresh_titles_preview()
 		return
+		
+	# Initialize progress bar
+	#if slide_progress_bar:
+		#slide_progress_bar.max_value = 100
+		#slide_progress_bar.value = 0
+		#slide_progress_bar.show_percentage = true
+	
 	_show_slide(0)
+	_render_progress_bar()
+	
+func _process(delta: float) -> void:
+	# Only update progress bar if we have a valid slide and animation is playing
+	if is_instance_valid(current_slide):
+		var current_slide_player = current_slide.get_node_or_null("AnimationPlayer")
+		if current_slide_player and current_slide_player.is_playing():
+			_update_progress_bar()
+	
 
 # Public method to manually refresh titles (useful for editor scripts)
 func refresh_titles() -> void:
@@ -56,6 +77,9 @@ func _show_slide(i: int) -> void:
 
 	slide_changed.emit(index)
 	progress_changed.emit(unlocked_max_index, index)
+	
+	# Initialize progress bar for the new slide
+	_render_progress_bar()
 
 func go_next() -> void:
 	mark_current_complete()
@@ -144,3 +168,48 @@ func _fallback_title_from_path(packed: PackedScene) -> String:
 	if packed.resource_path != "":
 		return packed.resource_path.get_file().get_basename()
 	return "Untitled"
+
+
+func _render_progress_bar():
+	if not is_instance_valid(current_slide):
+		slide_progress_bar.max_value = 100
+		slide_progress_bar.value = 0
+		return
+		
+	var current_slide_player = current_slide.get_node_or_null("AnimationPlayer")
+	if not current_slide_player:
+		slide_progress_bar.max_value = 100
+		slide_progress_bar.value = 0
+		return
+		
+	var current_slide_animation = current_slide_player.get_animation("Slide_Animation")
+	if not current_slide_animation:
+		slide_progress_bar.max_value = 100
+		slide_progress_bar.value = 0
+		return
+		
+	total_length = current_slide_animation.length
+	slide_progress_bar.max_value = 100
+	slide_progress_bar.value = 0
+	print("Progress bar initialized - Total length:", total_length)
+	
+func _update_progress_bar():
+	if not is_instance_valid(current_slide):
+		return
+		
+	var current_slide_player = current_slide.get_node_or_null("AnimationPlayer")
+	if not current_slide_player:
+		return
+		
+	var current_slide_animation = current_slide_player.get_animation("Slide_Animation")
+	if not current_slide_animation:
+		return
+		
+	# Get current animation position from the AnimationPlayer, not the animation resource
+	var current_progress = current_slide_player.current_animation_position
+	
+	# Calculate progress as a percentage of total length
+	if total_length > 0:
+		var progress_percentage = (current_progress / total_length) * 100
+		slide_progress_bar.value = progress_percentage
+		print("Progress: ", progress_percentage, "% (", current_progress, "/", total_length, ")")
