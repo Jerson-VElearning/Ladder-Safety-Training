@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://buthxbc6me2ox"]
+[gd_scene load_steps=15 format=3 uid="uid://buthxbc6me2ox"]
 
 [ext_resource type="Theme" uid="uid://ch6l5082r6sr4" path="res://Theme/MyTheme.theme" id="1_arqed"]
 [ext_resource type="Script" uid="uid://cqa5cmvhlufp3" path="res://Scripts/CourseShell.gd" id="1_vjnhd"]
@@ -8,6 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://bvolo58fnxx5d" path="res://Scenes/Slide_05.tscn" id="5_wjt1c"]
 [ext_resource type="PackedScene" uid="uid://c08xi6lkikxcq" path="res://Scenes/Slide_06.tscn" id="6_4clcw"]
 [ext_resource type="Script" uid="uid://bob6uudja37oh" path="res://Scripts/HeaderUI.gd" id="7_vlwof"]
+[ext_resource type="PackedScene" uid="uid://cfxmqjvfm3mvj" path="res://Scenes/Slide_07.tscn" id="8_hc3j5"]
+[ext_resource type="PackedScene" uid="uid://usjqgdaxko41" path="res://Scenes/Slide_08.tscn" id="9_3ht7e"]
+[ext_resource type="Texture2D" uid="uid://bfgddq1fu8kam" path="res://Images/Pause_Icon.png" id="9_50kuc"]
+[ext_resource type="PackedScene" uid="uid://cr6mea4jpxt8x" path="res://Scenes/Slide_09.tscn" id="10_15di5"]
+[ext_resource type="Texture2D" uid="uid://cfy8ehwl2q1hk" path="res://Images/RePlay_Icon.png" id="13_3ht7e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_arqed"]
 
@@ -18,10 +23,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_arqed")
 script = ExtResource("1_vjnhd")
-slides = Array[PackedScene]([ExtResource("2_4clcw"), ExtResource("3_vlwof"), ExtResource("4_arqed"), ExtResource("5_wjt1c"), ExtResource("6_4clcw")])
-titles_preview = Array[String](["Introduction", "Course Objectives", "Why is Preventing Falls from Ladders Important?", "How do you prevent falls from ladders?", "Common Ladder Hazards"])
+slides = Array[PackedScene]([ExtResource("2_4clcw"), ExtResource("3_vlwof"), ExtResource("4_arqed"), ExtResource("5_wjt1c"), ExtResource("6_4clcw"), ExtResource("8_hc3j5"), ExtResource("9_3ht7e"), ExtResource("10_15di5")])
+titles_preview = Array[String](["Introduction", "Course Objectives", "Why is Preventing Falls from Ladders Important?", "How do you prevent falls from ladders?", "Common Ladder Hazards", "OSHA Fall Protection Requirements ", "Types of Ladders", "Ladder Inspection"])
 
 [node name="SlideHost" type="Container" parent="."]
 unique_name_in_owner = true
@@ -41,6 +47,7 @@ anchor_bottom = 1.0
 offset_top = -126.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 script = ExtResource("7_vlwof")
 
 [node name="BottomPanel" type="Panel" parent="HeaderUI"]
@@ -67,12 +74,13 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_arqed")
 
 [node name="SlideMenu" type="MenuButton" parent="HeaderUI/BottomPanel/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.25
 text = "Menu"
 flat = false
+alignment = 0
 text_overrun_behavior = 3
 
 [node name="Panel3" type="Panel" parent="HeaderUI/BottomPanel/HBoxContainer"]
@@ -86,6 +94,7 @@ custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+value = 9.7
 show_percentage = false
 
 [node name="Panel2" type="Panel" parent="HeaderUI/BottomPanel/HBoxContainer"]
@@ -97,11 +106,21 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_arqed")
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 4
+theme_type_variation = &"Button_Navigation"
+toggle_mode = true
+icon = ExtResource("9_50kuc")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
 
 [node name="Replay" type="Button" parent="HeaderUI/BottomPanel/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 4
+theme_type_variation = &"Button_Navigation"
+icon = ExtResource("13_3ht7e")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Panel" type="Panel" parent="HeaderUI/BottomPanel/HBoxContainer"]
 custom_minimum_size = Vector2(20, 0)
@@ -114,6 +133,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.25
+theme_type_variation = &"Button_Navigation"
 text = "Prev"
 
 [node name="NextButton" type="Button" parent="HeaderUI/BottomPanel/HBoxContainer"]
@@ -122,6 +142,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.25
+theme_type_variation = &"Button_Navigation"
 text = "Next"
 
 [node name="Panel4" type="Panel" parent="HeaderUI/BottomPanel/HBoxContainer"]
@@ -129,5 +150,9 @@ custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_arqed")
 
-[connection signal="pressed" from="HeaderUI/BottomPanel/HBoxContainer/PreviousButton" to="." method="go_prev"]
-[connection signal="pressed" from="HeaderUI/BottomPanel/HBoxContainer/NextButton" to="." method="go_next"]
+[connection signal="pressed" from="HeaderUI/BottomPanel/HBoxContainer/Play_Pause" to="HeaderUI" method="_lose_focus"]
+[connection signal="toggled" from="HeaderUI/BottomPanel/HBoxContainer/Play_Pause" to="." method="_on_play_pause_toggled"]
+[connection signal="pressed" from="HeaderUI/BottomPanel/HBoxContainer/Replay" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="HeaderUI/BottomPanel/HBoxContainer/Replay" to="HeaderUI" method="_lose_focus"]
+[connection signal="pressed" from="HeaderUI/BottomPanel/HBoxContainer/PreviousButton" to="HeaderUI" method="_lose_focus"]
+[connection signal="pressed" from="HeaderUI/BottomPanel/HBoxContainer/NextButton" to="HeaderUI" method="_lose_focus"]

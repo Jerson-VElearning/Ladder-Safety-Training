@@ -30,9 +30,12 @@ tracks/1/path = NodePath("RichTextLabel")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.266667),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.0333333, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"_ready"
+}, {
 "args": [],
 "method": &"text_fade_up"
 }]
@@ -44,9 +47,12 @@ tracks/2/path = NodePath("TextAnimation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(6.36667),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 6.36667),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"_ready"
+}, {
 "args": [],
 "method": &"text_fade_up"
 }]
@@ -58,9 +64,12 @@ tracks/3/path = NodePath("TextAnimation2")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(8.33333),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 8.33333),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"_ready"
+}, {
 "args": [],
 "method": &"text_fade_up"
 }]
@@ -72,9 +81,12 @@ tracks/4/path = NodePath("TextAnimation3")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(12.8333),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 12.8333),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"_ready"
+}, {
 "args": [],
 "method": &"text_fade_up"
 }]
@@ -87,6 +99,7 @@ _data = {
 
 [node name="Control" instance=ExtResource("1_eij76")]
 slide_title = "Introduction"
+previous_button = false
 
 [node name="RichTextLabel" parent="." index="3"]
 offset_left = 38.0

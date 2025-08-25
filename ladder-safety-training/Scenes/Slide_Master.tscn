@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhpm8cqfh0pp"]
+[gd_scene load_steps=7 format=3 uid="uid://dhpm8cqfh0pp"]
 
 [ext_resource type="Texture2D" uid="uid://divu28ndchag2" path="res://Images/Introduction.jpg" id="1_235nh"]
 [ext_resource type="Script" uid="uid://c8dlwtyyuhmv5" path="res://Scripts/Slide.gd" id="1_onth2"]
-[ext_resource type="AudioStream" uid="uid://bgttv7r3qcoey" path="res://Audio/06_Common_ladder_hazards.mp3" id="3_gb23b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nw8lx"]
 bg_color = Color(0.956097, 0.972352, 0.997033, 1)
@@ -19,12 +18,8 @@ tracks/0/path = NodePath("AudioStreamPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("3_gb23b")
-}],
-"times": PackedFloat32Array(0.633333)
+"clips": [],
+"times": PackedFloat32Array()
 }
 tracks/0/use_blend = true
 
@@ -105,7 +100,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_onth2")
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=["AudioStreams"]]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]

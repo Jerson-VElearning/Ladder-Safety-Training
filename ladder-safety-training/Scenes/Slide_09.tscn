@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cr6mea4jpxt8x"]
+[gd_scene load_steps=19 format=3 uid="uid://cr6mea4jpxt8x"]
 
 [ext_resource type="Script" uid="uid://c8dlwtyyuhmv5" path="res://Scripts/Slide.gd" id="1_pdsse"]
 [ext_resource type="Texture2D" uid="uid://bstxw48klmb4k" path="res://Images/Ladder_Inspection.jpg" id="2_l3fsn"]
+[ext_resource type="AudioStream" uid="uid://bngu3h4tpb5y8" path="res://Audio/15_Ladder_Inspection.mp3" id="2_nbmwf"]
 [ext_resource type="Script" uid="uid://dsc354stvq573" path="res://Scripts/icon_animation.gd" id="3_moo1l"]
 [ext_resource type="Texture2D" uid="uid://b6v4cbkj8kxxm" path="res://Images/Inspection_Icon.png" id="4_s4iuo"]
 [ext_resource type="Script" uid="uid://diwl6asousjys" path="res://Scripts/control_animation.gd" id="5_s4iuo"]
@@ -10,9 +11,48 @@
 [ext_resource type="Texture2D" uid="uid://cvckllyr78w5q" path="res://Images/CloseButton.svg" id="7_ho0di"]
 [ext_resource type="Texture2D" uid="uid://bkyqgrh7kihfu" path="res://Images/04_Bends.jpeg" id="9_ho0di"]
 [ext_resource type="Script" uid="uid://dscj6rrup2uif" path="res://Scripts/TextAnimation.gd" id="10_n5eqy"]
+[ext_resource type="Texture2D" uid="uid://crnji3gav8ldk" path="res://Images/04_Feet.jpeg" id="11_8qqsi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0d4k"]
 bg_color = Color(0.874053, 0.680114, 0.174062, 1)
+
+[sub_resource type="Animation" id="Animation_8qqsi"]
+resource_name = "Slide_Animation"
+length = 6.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_nbmwf")
+}],
+"times": PackedFloat32Array(0.233333)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextAnimation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.266667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"text_fade_up"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sl62s"]
+_data = {
+&"Slide_Animation": SubResource("Animation_8qqsi")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ho0di"]
 radius = 49.0102
@@ -44,6 +84,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_pdsse")
+slide_title = "Ladder Inspection"
+go_to_next_slide_on_finished = false
+next_button = false
 metadata/_custom_type_script = "uid://c8dlwtyyuhmv5"
 
 [node name="Panel" type="Panel" parent="."]
@@ -71,6 +114,9 @@ theme_override_font_sizes/font_size = 80
 text = "Ladder Inspection"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sl62s")
+}
 
 [node name="LadderInspection" type="Sprite2D" parent="."]
 position = Vector2(1378, 545)
@@ -122,9 +168,9 @@ shape = SubResource("CircleShape2D_ho0di")
 [node name="Cracks_Panel" type="Panel" parent="." groups=["Panels"]]
 layout_mode = 0
 offset_left = 132.0
-offset_top = 653.0
+offset_top = 583.0
 offset_right = 965.0
-offset_bottom = 1001.0
+offset_bottom = 931.0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_n5eqy")
 script = ExtResource("5_s4iuo")
@@ -166,9 +212,9 @@ texture = ExtResource("7_ho0di")
 [node name="Bent_Panel" type="Panel" parent="." groups=["Panels"]]
 layout_mode = 0
 offset_left = 132.0
-offset_top = 653.0
+offset_top = 583.0
 offset_right = 965.0
-offset_bottom = 1001.0
+offset_bottom = 931.0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_n5eqy")
 script = ExtResource("5_s4iuo")
@@ -211,9 +257,9 @@ texture = ExtResource("7_ho0di")
 [node name="Footing_Panel" type="Panel" parent="." groups=["Panels"]]
 layout_mode = 0
 offset_left = 132.0
-offset_top = 653.0
+offset_top = 583.0
 offset_right = 965.0
-offset_bottom = 1001.0
+offset_bottom = 931.0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_n5eqy")
 script = ExtResource("5_s4iuo")
@@ -225,12 +271,21 @@ offset_top = 14.0
 offset_right = 679.0
 offset_bottom = 78.0
 theme_override_font_sizes/font_size = 46
-text = "Bent Rungs"
+text = "Footing"
 
-[node name="04BrokenRung" type="Sprite2D" parent="Footing_Panel"]
-position = Vector2(588.88, 176.16)
-scale = Vector2(0.584, 0.584)
-texture = ExtResource("9_ho0di")
+[node name="Container" type="Container" parent="Footing_Panel"]
+clip_contents = true
+layout_mode = 0
+offset_left = 440.0
+offset_top = 32.0
+offset_right = 798.0
+offset_bottom = 324.0
+
+[node name="04BrokenRung" type="Sprite2D" parent="Footing_Panel/Container"]
+position = Vector2(166, 44)
+rotation = 1.5708
+scale = Vector2(0.818256, 0.818256)
+texture = ExtResource("11_8qqsi")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Footing_Panel"]
 layout_mode = 0
@@ -239,8 +294,7 @@ offset_top = 88.0
 offset_right = 434.0
 offset_bottom = 300.0
 theme_override_font_sizes/normal_font_size = 35
-text = "Ensure that the rungs are not bent or damaged.
-"
+text = "Verify that the ladder's footing is stable and secure."
 
 [node name="Area2D" type="Area2D" parent="Footing_Panel" node_paths=PackedStringArray("target_object")]
 position = Vector2(830, 0)
@@ -266,6 +320,8 @@ text = "Ladders must be inspected before each use.
 [i]Click on each icon to learn more.[/i]"
 script = ExtResource("10_n5eqy")
 metadata/_custom_type_script = "uid://dscj6rrup2uif"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="input_event" from="Cracks" to="Cracks" method="_on_input_event"]
 [connection signal="mouse_entered" from="Cracks" to="Cracks" method="_on_mouse_entered"]

@@ -1,0 +1,114 @@
+[gd_scene load_steps=12 format=3 uid="uid://d4c2fw21s4cro"]
+
+[ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_2te5w"]
+[ext_resource type="Script" uid="uid://c4o81t8bvsl7l" path="res://Scripts/Title_Slide.gd" id="2_mk7wr"]
+[ext_resource type="AudioStream" uid="uid://bowkvagnk63c" path="res://Audio/01_Title Slide.mp3" id="3_iqbb3"]
+[ext_resource type="PackedScene" uid="uid://buthxbc6me2ox" path="res://Scenes/CoursePlayer.tscn" id="3_mk7wr"]
+[ext_resource type="Texture2D" uid="uid://b4pecpx725luq" path="res://Images/Picture1.png" id="4_8wjw8"]
+[ext_resource type="FontFile" uid="uid://b0qkxhyygs16n" path="res://Fonts/Noto_Sans/static/NotoSans-Bold.ttf" id="5_qgjfu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lnd2"]
+bg_color = Color(0.956863, 0.74902, 0.129412, 1)
+
+[sub_resource type="Animation" id="Animation_i384l"]
+resource_name = "Slide_Animation"
+length = 7.5
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 7.31,
+"start_offset": 0.0,
+"stream": ExtResource("3_iqbb3")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5tu1a"]
+_data = {
+&"Slide_Animation": SubResource("Animation_i384l")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eaw7k"]
+bg_color = Color(0.742844, 0.575845, 0.0501214, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.779103, 0.6045, 0.0546608, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mk7wr"]
+bg_color = Color(0.99179, 0.795692, 0.274442, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.779103, 0.6045, 0.0546608, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Control" instance=ExtResource("1_2te5w")]
+script = ExtResource("2_mk7wr")
+course_player = ExtResource("3_mk7wr")
+
+[node name="Background" parent="." index="0"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_6lnd2")
+
+[node name="Container" parent="." index="1"]
+visible = false
+
+[node name="Header" parent="." index="2"]
+visible = false
+
+[node name="RichTextLabel" parent="." index="3"]
+visible = false
+
+[node name="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_5tu1a")
+}
+autoplay = "Slide_Animation"
+
+[node name="TitleSlide" type="Sprite2D" parent="." index="6"]
+position = Vector2(1455, 542)
+scale = Vector2(0.438894, 0.438894)
+texture = ExtResource("4_8wjw8")
+
+[node name="Label" type="Label" parent="." index="7"]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 494.0
+offset_right = 533.0
+offset_bottom = 968.0
+theme_override_fonts/font = ExtResource("5_qgjfu")
+theme_override_font_sizes/font_size = 106
+text = "Ladder
+Safety
+Training"
+
+[node name="Button" type="Button" parent="." index="8"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 963.0
+offset_right = 449.0
+offset_bottom = 1031.0
+theme_type_variation = &"Button_Navigation"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_eaw7k")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eaw7k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eaw7k")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mk7wr")
+text = "Start"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

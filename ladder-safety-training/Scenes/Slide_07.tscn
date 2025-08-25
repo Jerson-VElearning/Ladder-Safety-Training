@@ -1,9 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfxmqjvfm3mvj"]
+[gd_scene load_steps=5 format=3 uid="uid://cfxmqjvfm3mvj"]
 
 [ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_awpe4"]
+[ext_resource type="AudioStream" uid="uid://cq8uwihhvlks6" path="res://Audio/07_OSHA_requirements.mp3" id="2_duioh"]
+
+[sub_resource type="Animation" id="Animation_r5cdl"]
+resource_name = "Slide_Animation"
+length = 6.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_duioh")
+}],
+"times": PackedFloat32Array(0.166667)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_326jm"]
+_data = {
+&"Slide_Animation": SubResource("Animation_r5cdl")
+}
 
 [node name="Control" instance=ExtResource("1_awpe4")]
 slide_title = "OSHA Fall Protection Requirements "
+go_to_next_slide_on_finished = false
 
 [node name="Container" parent="." index="1"]
 visible = false
@@ -21,12 +47,17 @@ offset_bottom = 406.0
 text = "Here is a list of OSHA’s fall protection requirements. Click on each tab to learn more. 
 "
 
+[node name="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_326jm")
+}
+
 [node name="TabContainer" type="TabContainer" parent="." index="5"]
 layout_mode = 0
 offset_left = 129.0
-offset_top = 479.0
+offset_top = 429.0
 offset_right = 1762.0
-offset_bottom = 955.0
+offset_bottom = 905.0
 tab_alignment = 1
 current_tab = 0
 clip_tabs = false
@@ -45,6 +76,7 @@ grow_vertical = 2
 theme_type_variation = &"RichTextLabel_PanelText"
 text = "Each employee on a scaffold more than 10’ (3.1M) above a lower level shall be protected from falling to a lower level. 
 "
+vertical_alignment = 1
 
 [node name="Subpart X – Ladders" type="Label" parent="TabContainer" index="2"]
 visible = false
@@ -65,6 +97,7 @@ grow_vertical = 2
 theme_type_variation = &"RichTextLabel_PanelText"
 text = "Fall protection is not required for workers climbing or working on portable ladders.
 "
+vertical_alignment = 1
 
 [node name="Subpart X – Stairways" type="Label" parent="TabContainer" index="3"]
 visible = false
@@ -81,6 +114,7 @@ grow_vertical = 2
 theme_type_variation = &"RichTextLabel_PanelText"
 text = "Stairways having four (4) or more risers or rising more than 30 inches must be equipped with atleast one handrail; and one stair rail system along each unprotected side or edge. 
 "
+vertical_alignment = 1
 
 [node name="Subpart M - 1926_501(b)(13)" type="Label" parent="TabContainer" index="4"]
 visible = false
@@ -100,3 +134,4 @@ text = "Residential construction. Each employee engaged in residential construct
 
 [i][b]Exemption:[/b] When the employer can demonstrate the protection is infeasible or creates a greater hazard the employer must develop an alternative fall protection plan.[i]
 "
+vertical_alignment = 1

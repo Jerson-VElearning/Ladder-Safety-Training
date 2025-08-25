@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dk07gsike5l1l"]
+[gd_scene load_steps=8 format=3 uid="uid://dk07gsike5l1l"]
 
 [ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_8mpmm"]
 [ext_resource type="Texture2D" uid="uid://bxxk1tt1o6jqx" path="res://Images/Chart.jpg" id="1_esdqj"]
 [ext_resource type="AudioStream" uid="uid://6bfvqy1gmkym" path="res://Audio/04_Preventing_Falls.mp3" id="3_bdr56"]
 [ext_resource type="Script" uid="uid://dscj6rrup2uif" path="res://Scripts/TextAnimation.gd" id="4_wdlj6"]
+[ext_resource type="Script" uid="uid://bnt6ihprwr5ox" path="res://Scripts/chart.gd" id="5_a2o4v"]
 
 [sub_resource type="Animation" id="Animation_8mpmm"]
 resource_name = "Slide_Animation"
@@ -73,10 +74,10 @@ _data = {
 
 [node name="Control" instance=ExtResource("1_8mpmm")]
 slide_title = "Why is Preventing Falls from Ladders Important?"
-go_to_next_slide_on_finished = false
 
 [node name="Introduction" parent="Container" index="0"]
-position = Vector2(1285, 333)
+position = Vector2(1294, 294)
+scale = Vector2(1.36514, 1.36514)
 texture = ExtResource("1_esdqj")
 
 [node name="Header" parent="." index="2"]
@@ -115,9 +116,9 @@ autoplay = "Slide_Animation"
 [node name="TextAnimation" type="RichTextLabel" parent="." index="6"]
 layout_mode = 0
 offset_left = 756.0
-offset_top = 660.0
+offset_top = 612.0
 offset_right = 1898.0
-offset_bottom = 826.0
+offset_bottom = 778.0
 text = "1. Falls continue to be the leading cause of fatalities in residential construction. 
 "
 script = ExtResource("4_wdlj6")
@@ -126,9 +127,9 @@ metadata/_custom_type_script = "uid://dscj6rrup2uif"
 [node name="TextAnimation2" type="RichTextLabel" parent="." index="7"]
 layout_mode = 0
 offset_left = 756.0
-offset_top = 807.0
+offset_top = 737.0
 offset_right = 1898.0
-offset_bottom = 973.0
+offset_bottom = 903.0
 text = "2. Falls (602) were responsible for 45% of residential construction fatalities from 2003 to 2006.
 "
 script = ExtResource("4_wdlj6")
@@ -137,11 +138,33 @@ metadata/_custom_type_script = "uid://dscj6rrup2uif"
 [node name="TextAnimation3" type="RichTextLabel" parent="." index="8"]
 layout_mode = 0
 offset_left = 755.0
-offset_top = 962.0
+offset_top = 875.0
 offset_right = 1897.0
-offset_bottom = 1128.0
+offset_bottom = 1041.0
 text = "3. 135 (22%) were falls from ladders.
 
 "
 script = ExtResource("4_wdlj6")
 metadata/_custom_type_script = "uid://dscj6rrup2uif"
+
+[node name="CircularChart" type="Control" parent="." index="9"]
+visible = false
+custom_minimum_size = Vector2(500, 500)
+anchors_preset = 0
+offset_left = 1101.0
+offset_top = 88.0
+offset_right = 1706.0
+offset_bottom = 718.0
+mouse_filter = 2
+script = ExtResource("5_a2o4v")
+chart_labels = Array[String](["Falls", "Contact with Objects/Equipment", "Exposure to Harmful Substance", "Transportation Accidents", "Assaults and Violent Acts", "Fire and Explosions"])
+chart_values = Array[float]([602.0, 251.0, 248.0, 199.0, 48.0, 34.0])
+chart_colors = Array[Color]([Color(1, 0, 0, 1), Color(0, 0, 1, 1), Color(0, 1, 0, 1), Color(1, 1, 0, 1), Color(0.627451, 0.12549, 0.941176, 1), Color(0, 0.911082, 0, 1)])
+chart_radius = 200.0
+label_font_size = 630
+label_color = Color(0.680321, 0.680321, 0.680321, 1)
+label_offset = 37.305
+stroke_width = 0.0
+animate_chart = false
+animation_duration = 2.0
+metadata/_custom_type_script = "uid://bnt6ihprwr5ox"

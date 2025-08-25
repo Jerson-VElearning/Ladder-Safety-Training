@@ -1,13 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://usjqgdaxko41"]
+[gd_scene load_steps=17 format=3 uid="uid://usjqgdaxko41"]
 
 [ext_resource type="PackedScene" uid="uid://dhpm8cqfh0pp" path="res://Scenes/Slide_Master.tscn" id="1_drenp"]
+[ext_resource type="AudioStream" uid="uid://bihjxne88dhgl" path="res://Audio/12_Types_of_Ladders.mp3" id="2_wspi4"]
 [ext_resource type="Texture2D" uid="uid://suoqvgfnqv5l" path="res://Images/ExtensionLadder.png" id="2_xp38x"]
 [ext_resource type="Script" uid="uid://b7h6yjaqpo4yx" path="res://Scripts/card_flip.gd" id="3_mtpqy"]
 [ext_resource type="Texture2D" uid="uid://bsam7pseyst4r" path="res://Images/CardBack.png" id="4_wspi4"]
 [ext_resource type="Texture2D" uid="uid://5wde6riy41aa" path="res://Images/Stepladder.png" id="5_l4pf1"]
+[ext_resource type="AudioStream" uid="uid://fqawvd6f3bov" path="res://Audio/13_Types_of_Ladders_StepLadders.mp3" id="6_l4pf1"]
+[ext_resource type="AudioStream" uid="uid://54u46gdf8fpf" path="res://Audio/14_Types_of_Ladders_Extension.mp3" id="8_hyyq3"]
 
 [sub_resource type="Animation" id="Animation_drenp"]
 resource_name = "Slide_Animation"
+length = 8.0
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -15,8 +19,12 @@ tracks/0/path = NodePath("AudioStreamPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"clips": [],
-"times": PackedFloat32Array()
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_wspi4")
+}],
+"times": PackedFloat32Array(0.166667)
 }
 tracks/0/use_blend = true
 
@@ -124,6 +132,8 @@ _data = {
 
 [node name="Control" instance=ExtResource("1_drenp")]
 mouse_filter = 2
+slide_title = "Types of Ladders"
+go_to_next_slide_on_finished = false
 
 [node name="Background" parent="." index="0"]
 mouse_filter = 2
@@ -131,29 +141,37 @@ mouse_filter = 2
 [node name="Container" parent="." index="1"]
 visible = false
 
+[node name="Label" parent="Header" index="0"]
+text = "Types of Ladders"
+
 [node name="RichTextLabel" parent="." index="3"]
-offset_left = 1090.0
-offset_top = 77.0
-offset_right = 1756.0
-offset_bottom = 303.0
+offset_left = 1000.0
+offset_top = 54.0
+offset_right = 1810.0
+offset_bottom = 316.0
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/normal_font_size = 36
+text = "There are two types of ladders that are commonly used in construction to ensure safety and efficiency. 
+[i]Click on each tab to learn more."
 
 [node name="AnimationPlayer" parent="." index="4"]
 libraries = {
 &"": SubResource("AnimationLibrary_xp38x")
 }
 
-[node name="StepLadder" type="Control" parent="." index="6" node_paths=PackedStringArray("animation")]
+[node name="StepLadder" type="Control" parent="." index="6" node_paths=PackedStringArray("animation", "card_audio")]
 anchors_preset = 0
 offset_left = 285.0
-offset_top = 306.0
+offset_top = 267.0
 offset_right = 835.0
-offset_bottom = 956.0
+offset_bottom = 917.0
 pivot_offset = Vector2(275, 325)
 mouse_filter = 2
 script = ExtResource("3_mtpqy")
 animation = NodePath("CardAnimation")
 movement_offset = Vector2(0, -25)
 animation_duration = 0.4
+card_audio = NodePath("CardBack/13TypesOfLaddersStepLadders")
 
 [node name="Area2D" type="Area2D" parent="StepLadder" index="0"]
 position = Vector2(59, 100)
@@ -188,13 +206,17 @@ text = "These are self-supporting ladders that can be used for a variety of task
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ExtensionLadder2" type="Control" parent="." index="7" node_paths=PackedStringArray("animation")]
+[node name="13TypesOfLaddersStepLadders" type="AudioStreamPlayer2D" parent="StepLadder/CardBack" index="1" groups=["Card_Audio"]]
+position = Vector2(42, 696)
+stream = ExtResource("6_l4pf1")
+
+[node name="ExtensionLadder2" type="Control" parent="." index="7" node_paths=PackedStringArray("animation", "card_audio")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1083.0
-offset_top = 306.0
+offset_top = 267.0
 offset_right = 1633.0
-offset_bottom = 956.0
+offset_bottom = 917.0
 pivot_offset = Vector2(275, 325)
 mouse_filter = 2
 script = ExtResource("3_mtpqy")
@@ -202,6 +224,7 @@ animation = NodePath("ExtensionAnimation")
 movement_offset = Vector2(0, -25)
 animation_duration = 0.4
 trans_type = 1
+card_audio = NodePath("14TypesOfLaddersExtension")
 
 [node name="ExtensionAnimation" type="AnimationPlayer" parent="ExtensionLadder2" index="0"]
 libraries = {
@@ -219,7 +242,11 @@ shape = SubResource("RectangleShape2D_g0o0i")
 position = Vector2(277, 326)
 texture = ExtResource("2_xp38x")
 
-[node name="CardBack" type="Sprite2D" parent="ExtensionLadder2" index="3"]
+[node name="14TypesOfLaddersExtension" type="AudioStreamPlayer2D" parent="ExtensionLadder2" index="3" groups=["Card_Audio"]]
+position = Vector2(49, 708)
+stream = ExtResource("8_hyyq3")
+
+[node name="CardBack" type="Sprite2D" parent="ExtensionLadder2" index="4"]
 z_index = -1
 texture = ExtResource("4_wspi4")
 centered = false

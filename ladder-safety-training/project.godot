@@ -11,14 +11,24 @@ config_version=5
 [application]
 
 config/name="Ladder Safety Training"
-run/main_scene="uid://buthxbc6me2ox"
+run/main_scene="uid://d4c2fw21s4cro"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[audio]
+
+general/default_playback_type.web=0
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
+
+[global_group]
+
+AudioStreams=""
 
 [gui]
 

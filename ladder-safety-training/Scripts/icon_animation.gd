@@ -55,6 +55,6 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if target_panel and target_panel.has_method("text_fade_up"):
 			# Call the text_fade_up method on the target panel
 			target_panel.text_fade_up()
-			print("Called text_fade_up on target panel")
+			print(target_panel)
 		else:
 			print("No target panel assigned or missing text_fade_up method!")
